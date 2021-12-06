@@ -2,7 +2,10 @@
 FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 
 # install environment dependencies
-RUN apt-get update -y && apt-get upgrade -y && apt-get -y install git python-setuptools python-dev build-essential python-pip
+RUN apt-get update
+RUN apt-get install curl git python-setuptools python-dev build-essential -y
+RUN curl -o get-pip.py https://bootstrap.pypa.io/pip/2.7/get-pip.py
+RUN python get-pip.py
 # install TensorFlow with GPU support
 RUN pip install tensorflow-gpu
 
